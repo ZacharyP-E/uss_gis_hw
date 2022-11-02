@@ -23,15 +23,14 @@ shape <- read_sf(shp_path)
 
 #Convert country codes to be in same format using countrycode package
 #Documentation: https://www.rdocumentation.org/packages/countrycode/versions/1.4.0/topics/countrycode
+df3 <- df2 %>%
+  mutate(iso2 = countrycode(`iso3`, "iso3c", "iso2c"))
 
-
-
-#####Incorrect code
 #Merging the shapefule and the csv together
 df_m <- shape %>%
-  inner_join(., 
-            df2,
-            by = c("COUNTRY" = "country"))
+  left_join(., 
+            df3,
+            by = c("ISO" = "iso2"))
 
 
 
