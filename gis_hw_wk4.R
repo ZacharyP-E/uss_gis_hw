@@ -8,7 +8,7 @@ csv_path <- "data/HDR21-22_Composite_indices_complete_time_series.csv"
 shp_path <- "data/World_Countries_(Generalized)/World_Countries__Generalized_.shp"
 
 #Reading in the csv file
-df <- read_csv(here(csv_path))
+df <- read_csv(here(csv_path), na = "")
 
 #Identfiying the columns to be used in analysis
 df1 <- df %>%
